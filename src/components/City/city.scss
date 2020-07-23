@@ -1,0 +1,21 @@
+.city {
+  margin: 5rem auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .card {
+    background-color: #74b9ff;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    box-shadow: 0 0 8px 0 rgba(0,0,0, .2);
+
+    &--current {
+      width: 80%;
+    }
+  }
+}

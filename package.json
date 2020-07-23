@@ -55,8 +55,10 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "prop-types": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "react-feather": "^2.0.8"
   }
 }
