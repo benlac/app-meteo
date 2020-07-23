@@ -1,31 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import './search.scss';
+import FormSearch from './FormSearch';
 
 const Search = ({ value, setValue, searchCity }) => (
   <header className="search__header">
     <nav className="search__nav">
-      <a className="search__link" href="">Home</a>
+      <NavLink to="/">Météo du jour</NavLink>
+      <NavLink to="/next-days">Les prochains jours</NavLink>
+      <NavLink to="favorite">Villes favorites</NavLink>
     </nav>
-    <form
-      className="search__form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        searchCity();
-      }}
-    >
-      <input
-        className="search__input"
-        type="text"
-        placeholder="Votre ville ..."
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      />
-      <button className="search__btn" type="submit">Search</button>
-    </form>
+    <FormSearch value={value} setValue={setValue} searchCity={searchCity} />
   </header>
 );
 

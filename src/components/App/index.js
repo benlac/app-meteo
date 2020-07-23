@@ -2,11 +2,14 @@
 // == Import npm
 import React from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 // == Import
 import './app.scss';
 import Search from '../Search';
 import City from '../City';
+import Home from '../Home';
+import NextDays from '../NextDays';
 
 // == Composant
 class App extends React.Component {
@@ -14,8 +17,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       nextWeather: {},
-      currentWeather: {},
-      loading: true,
+      currentWeather: null,
+      loadingCurrent: true,
+      loadingNext: true,
       error: null,
       searchValue: '',
     };
@@ -36,8 +40,21 @@ class App extends React.Component {
       .then((response) => {
         this.setState({
           currentWeather: response.data,
-          loading: false,
+          loadingCurrent: false,
           searchValue: '',
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error,
+        });
+      });
+
+    axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=612b8c5fac6e2ef50282f36ab900c6a2&lang=fr`)
+      .then((response) => {
+        this.setState({
+          nextWeather: response.data,
+          loadingNext: false,
         });
       })
       .catch((error) => {
@@ -48,12 +65,26 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentWeather, loading, searchValue } = this.state;
+    const {
+      currentWeather,
+      loadingCurrent,
+      loadingNext,
+      searchValue,
+      nextWeather,
+    } = this.state;
     return (
       <div className="app">
         <Search value={searchValue} setValue={this.setValue} searchCity={this.searchCity} />
-        {!loading
-        && <City current={currentWeather} />}
+        {!currentWeather
+        && <Home />}
+        <Route path="/" exact>
+          {!loadingCurrent
+          && <City current={currentWeather} />}
+        </Route>
+        <Route path="/next-days">
+          {!loadingNext
+          && <NextDays nextWeather={nextWeather} />}
+        </Route>
       </div>
     );
   }

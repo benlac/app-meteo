@@ -1,0 +1,31 @@
+.next-days {
+  margin-top: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  .days {
+    width: 100%;
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .days__title {
+      background: #a29bfe;
+      width: 100%;
+      padding: 1rem;
+      color: #FFF;
+      border-radius: 20px;
+    }
+    .card {
+      background-color: #74b9ff;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 20px;
+      width: 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+    }
+  }
+}
