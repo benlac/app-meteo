@@ -9,7 +9,7 @@ const Card = ({ data }) => (
     <p>{convertToCelcius(data.main.temp)}°C</p>
     <span>{data.weather[0].icon}</span>
     <p>{`${convertTimestampToDate(data.dt)} ${convertTimestamp((data.dt))}`}</p>
-    <Link to="/details">+ d'infos</Link>
+    <Link to={`/details/${data.dt}`}>+ d'infos</Link>
   </div>
 );
 

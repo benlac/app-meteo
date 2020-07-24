@@ -10,6 +10,7 @@ import Search from '../Search';
 import City from '../City';
 import Home from '../Home';
 import NextDays from '../NextDays';
+import NextDaysDetails from '../NextDaysDetails';
 
 // == Composant
 class App extends React.Component {
@@ -85,6 +86,8 @@ class App extends React.Component {
           {!loadingNext
           && <NextDays nextWeather={nextWeather} />}
         </Route>
+        {!loadingNext
+        && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
       </div>
     );
   }
