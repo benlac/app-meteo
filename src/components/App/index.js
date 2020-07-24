@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-unused-state */
 // == Import npm
 import React from 'react';
@@ -74,10 +75,25 @@ class App extends React.Component {
       favoriteNextCities,
       nextWeather,
     } = this.state;
-    this.setState({
-      favoriteCities: [...favoriteCities, currentWeather],
-      favoriteNextCities: [...favoriteNextCities, nextWeather],
-    });
+    // Si currentWeather et nextWeather n'existent pas dans favoriteCities et favoriteNextCities alors je l'ajoute
+    if (!favoriteCities.includes(currentWeather) && !favoriteNextCities.includes(nextWeather)) {
+      this.setState({
+        favoriteCities: [...favoriteCities, currentWeather],
+        favoriteNextCities: [...favoriteNextCities, nextWeather],
+      });
+    }
+    // Si currentWeather et nextWeather existent dans favoriteCities et favoriteNextCities alors je le supprime du tableau
+    if (favoriteCities.includes(currentWeather) && favoriteNextCities.includes(nextWeather)) {
+      const indexVal = favoriteCities.indexOf(currentWeather);
+      favoriteCities.splice(indexVal, 1);
+      const indexNextVal = favoriteNextCities.indexOf(nextWeather);
+      favoriteNextCities.splice(indexNextVal, 1);
+
+      this.setState({
+        favoriteCities,
+        favoriteNextCities,
+      });
+    }
   };
 
   favoriteCity = (name) => {
@@ -106,7 +122,7 @@ class App extends React.Component {
         && <Home />}
         <Route path="/" exact>
           {!loadingCurrent
-          && <City current={currentWeather} handleClick={this.addFavorite} />}
+          && <City current={currentWeather} handleClick={this.addFavorite} favorite={favoriteCities} />}
         </Route>
         <Route path="/next-days">
           {!loadingNext

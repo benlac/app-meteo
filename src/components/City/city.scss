@@ -18,7 +18,12 @@
       width: 80%;
     }
   }
-  .icon--star {
+  .icon-star {
     cursor: pointer;
+
+    &--favorite {
+      fill: #fdcb6d;
+      color: #fdcb6d;
+    }
   }
 }

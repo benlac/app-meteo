@@ -10,7 +10,7 @@ const CardFavorite = ({ name, setFavoriteCity }) => {
   return (
     <Link to="/" onClick={handleClick}>
       <div className="favorite__card">
-        <Star />
+        <Star className="star-icon" />
         <h1>{name}</h1>
         <p>Drapeau pays</p>
       </div>
