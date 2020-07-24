@@ -1,10 +1,8 @@
-.city {
-  margin: 5rem auto;
-  width: 80%;
+.favorite-cities {
+  margin-top: 5rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  .card {
+  .favorite__card {
     background-color: #86a6df;
     margin: 2rem;
     padding: 2rem;
@@ -13,12 +11,5 @@
     flex-direction: column;
     color: #FFF;
     box-shadow: 0 0 8px 0 rgba(0,0,0, .2);
-
-    &--current {
-      width: 80%;
-    }
-  }
-  .icon--star {
-    cursor: pointer;
   }
 }

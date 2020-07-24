@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import './city.scss';
 import { convertToCelcius, convertTimestamp, convertTimestampToDate } from '../../utils/convert';
 
-const City = ({ current }) => (
+const City = ({ current, handleClick }) => (
   <div className="city">
     <div className="card card--current">
       <h1>{current.name}, {current.sys.country}</h1>
       <div className="icon">
-        <Star className="icon--star" />
+        <Star className="icon--star" onClick={handleClick} />
       </div>
       <p>{convertTimestampToDate(current.dt)}</p>
       <span>image pays</span>
@@ -51,6 +51,7 @@ const City = ({ current }) => (
 
 City.propTypes = {
   current: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default City;
