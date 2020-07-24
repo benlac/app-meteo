@@ -26,6 +26,12 @@
       justify-content: center;
       align-items: center;
       color: #FFF;
+      h2 {
+        text-transform: capitalize;
+      }
+      .card__temp__next-days {
+        font-size: 2em;
+      }
     }
   }
 }

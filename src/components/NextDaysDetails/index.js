@@ -17,7 +17,7 @@ const NextDaysDetails = (props) => {
       <h1>Details: {props.data.city.name}</h1>
       <p>Le {`${convertTimestampToDate(detail.dt)} à ${convertTimestamp(detail.dt)}`}</p>
       <p>{detail.weather.description}</p>
-      <p>{detail.weather.icon}</p>
+      <img src={`http://openweathermap.org/img/wn/${detail.weather[0].icon}@2x.png`} alt="" />
       <p>Pourcentage de nuage: {detail.clouds.all}%</p>
       <p>Temperature ressenti: {convertToCelcius(detail.main.feels_like)}°C </p>
       <p>Pression atmospherique:{detail.main.pressure} hPa</p>

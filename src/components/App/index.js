@@ -3,7 +3,7 @@
 // == Import npm
 import React from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // == Import
 import './app.scss';
@@ -13,6 +13,7 @@ import Home from '../Home';
 import NextDays from '../NextDays';
 import NextDaysDetails from '../NextDaysDetails';
 import FavoriteCities from '../FavoriteCities';
+import Error from '../Error';
 
 // == Composant
 class App extends React.Component {
@@ -114,25 +115,41 @@ class App extends React.Component {
       searchValue,
       nextWeather,
       favoriteCities,
+      error,
     } = this.state;
+    // @TODO: Pouvoir relancer une recherche après une erreur
+    // @TODO: Gerer le décallage de date d'un mois
+    if (error) {
+      return (
+        <>
+          <Search />
+          <Error error={error} />
+        </>
+      );
+    }
     return (
       <div className="app">
         <Search value={searchValue} setValue={this.setValue} searchCity={this.searchCity} />
         {!currentWeather
         && <Home />}
-        <Route path="/" exact>
-          {!loadingCurrent
-          && <City current={currentWeather} handleClick={this.addFavorite} favorite={favoriteCities} />}
-        </Route>
-        <Route path="/next-days">
+        <Switch>
+          <Route path="/" exact>
+            {!loadingCurrent
+            && <City current={currentWeather} handleClick={this.addFavorite} favorite={favoriteCities} />}
+          </Route>
+          <Route path="/next-days">
+            {!loadingNext
+            && <NextDays nextWeather={nextWeather} />}
+          </Route>
           {!loadingNext
-          && <NextDays nextWeather={nextWeather} />}
-        </Route>
-        {!loadingNext
-        && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
-        <Route path="/favorite">
-          <FavoriteCities favoriteCities={favoriteCities} setFavoriteCity={this.favoriteCity} />
-        </Route>
+          && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
+          <Route path="/favorite">
+            <FavoriteCities favoriteCities={favoriteCities} setFavoriteCity={this.favoriteCity} />
+          </Route>
+          <Route>
+            <Error error={error} />
+          </Route>
+        </Switch>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Star } from 'react-feather';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const CardFavorite = ({ name, setFavoriteCity }) => {
+const CardFavorite = ({ name, sys, setFavoriteCity }) => {
   const handleClick = () => {
     setFavoriteCity(name);
   };
@@ -12,7 +12,7 @@ const CardFavorite = ({ name, setFavoriteCity }) => {
       <div className="favorite__card">
         <Star className="star-icon" />
         <h1>{name}</h1>
-        <p>Drapeau pays</p>
+        <img src={`https://www.countryflags.io/${sys.country}/shiny/64.png`} alt="" />
       </div>
     </Link>
   );
@@ -21,6 +21,7 @@ const CardFavorite = ({ name, setFavoriteCity }) => {
 CardFavorite.propTypes = {
   name: PropTypes.string.isRequired,
   setFavoriteCity: PropTypes.func.isRequired,
+  sys: PropTypes.object.isRequired,
 };
 
 export default CardFavorite;

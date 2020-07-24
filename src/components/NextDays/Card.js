@@ -6,8 +6,8 @@ import { convertToCelcius, convertTimestampToDate, convertTimestamp } from '../.
 const Card = ({ data }) => (
   <div className="card">
     <h2>{data.weather[0].description}</h2>
-    <p>{convertToCelcius(data.main.temp)}°C</p>
-    <span>{data.weather[0].icon}</span>
+    <p className="card__temp__next-days">{convertToCelcius(data.main.temp)}°C</p>
+    <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="" />
     <p>{`${convertTimestampToDate(data.dt)} ${convertTimestamp((data.dt))}`}</p>
     <Link to={`/details/${data.dt}`}>+ d'infos</Link>
   </div>
