@@ -29,7 +29,7 @@ export const convertTimestamp = (time) => {
 export const convertTimestampToDate = (time) => {
   const date = new Date(time * 1000);
   const years = date.getFullYear();
-  const month = `0${date.getMonth()}`;
+  const month = `0${date.getMonth() + 1}`;
   const days = `0${date.getDate()}`;
 
   const formattedTime = `${days.substr(-2)}/${month.substr(-2)}/${years}`;

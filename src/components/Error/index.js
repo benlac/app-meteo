@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -14,8 +15,8 @@ const Error = ({ error, handleClick }) => (
 );
 
 Error.propTypes = {
-  error: PropTypes.object.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  handleClick: PropTypes.func,
 };
 
 export default Error;
