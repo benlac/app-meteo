@@ -107,6 +107,13 @@ class App extends React.Component {
     });
   }
 
+  resetError = () => {
+    this.setState({
+      error: null,
+      searchValue: '',
+    });
+  }
+
   render() {
     const {
       currentWeather,
@@ -117,13 +124,11 @@ class App extends React.Component {
       favoriteCities,
       error,
     } = this.state;
-    // @TODO: Pouvoir relancer une recherche après une erreur
     // @TODO: Gerer le décallage de date d'un mois
     if (error) {
       return (
         <>
-          <Search />
-          <Error error={error} />
+          <Error error={error} handleClick={this.resetError} />
         </>
       );
     }
