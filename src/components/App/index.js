@@ -29,7 +29,6 @@ class App extends React.Component {
       favoriteCities: [],
       favoriteNextCities: [],
     };
-    this.setValue = this.setValue.bind(this);
   }
 
   setValue = (searchValue) => {
@@ -124,7 +123,6 @@ class App extends React.Component {
       favoriteCities,
       error,
     } = this.state;
-    // @TODO: Gerer le décallage de date d'un mois
     if (error) {
       return (
         <>
