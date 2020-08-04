@@ -14,6 +14,7 @@ import NextDays from '../NextDays';
 import NextDaysDetails from '../NextDaysDetails';
 import FavoriteCities from '../FavoriteCities';
 import Error from '../Error';
+import Footer from '../Footer';
 
 // == Composant
 class App extends React.Component {
@@ -149,10 +150,8 @@ class App extends React.Component {
           <Route path="/favorite">
             <FavoriteCities favoriteCities={favoriteCities} setFavoriteCity={this.favoriteCity} />
           </Route>
-          <Route>
-            <Error error={error} />
-          </Route>
         </Switch>
+        <Footer />
       </div>
     );
   }

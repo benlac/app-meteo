@@ -1,7 +1,12 @@
 .favorite-cities {
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
+  .favorite-cities__title {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+  }
   .favorite__card {
     background-color: #86a6df;
     margin: 2rem;
@@ -9,11 +14,21 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     color: #FFF;
     box-shadow: 0 0 8px 0 rgba(0,0,0, .2);
+    position: relative;
+
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
   }
   .star-icon {
     fill: #fdcb6d;
     color: #fdcb6d;
+    position: absolute;
+    top: 5px;
+    right: 5px;
   }
 }

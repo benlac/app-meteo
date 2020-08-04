@@ -1,3 +1,15 @@
 .next-days-details {
-  margin-top: 5rem;
+  margin: 2rem auto;
+
+  .next-days-details__title {
+    font-size: 1.8em;
+    padding: 1rem 0;
+  }
+  .next-days-details__text {
+    font-size: 1.4em;
+    padding: 1rem 0;
+  }
+  .next-days-details__img {
+    text-align: center;
+  }
 }

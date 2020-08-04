@@ -25,7 +25,7 @@ const NextDays = ({ nextWeather }) => {
 
   return (
     <div className="next-days">
-      <h1>La météo des prochain jours à {nextWeather.city.name}, {nextWeather.city.country}</h1>
+      <h1 className="next-days__title">La météo des prochain jours à {nextWeather.city.name}, {nextWeather.city.country}</h1>
       <div className="days">
         {rows}
       </div>
