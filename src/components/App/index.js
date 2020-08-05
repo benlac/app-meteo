@@ -139,7 +139,7 @@ class App extends React.Component {
       <div className="app">
         <Search value={searchValue} setValue={this.setValue} searchCity={this.searchCity} />
         {!currentWeather
-        && <Home />}
+        && !error && <Home />}
         <Switch>
           <Route path="/" exact>
             {loadingCurrent
@@ -159,6 +159,9 @@ class App extends React.Component {
           && currentWeather && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
           <Route path="/favorite">
             <FavoriteCities favoriteCities={favoriteCities} setFavoriteCity={this.favoriteCity} />
+          </Route>
+          <Route>
+            <Error />
           </Route>
         </Switch>
         <Footer />
