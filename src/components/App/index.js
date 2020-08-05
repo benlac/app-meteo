@@ -15,6 +15,7 @@ import NextDaysDetails from '../NextDaysDetails';
 import FavoriteCities from '../FavoriteCities';
 import Error from '../Error';
 import Footer from '../Footer';
+import Loader from '../Loader';
 
 // == Composant
 class App extends React.Component {
@@ -23,8 +24,8 @@ class App extends React.Component {
     this.state = {
       nextWeather: {},
       currentWeather: null,
-      loadingCurrent: true,
-      loadingNext: true,
+      loadingCurrent: false,
+      loadingNext: false,
       error: null,
       searchValue: '',
       favoriteCities: [],
@@ -33,7 +34,6 @@ class App extends React.Component {
   }
 
   setValue = (searchValue) => {
-    // console.log(searchValue);
     this.setState({
       searchValue,
     });
@@ -41,6 +41,10 @@ class App extends React.Component {
 
   searchCity = () => {
     const { searchValue } = this.state;
+    this.setState({
+      loadingCurrent: true,
+      loadingNext: true,
+    });
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=612b8c5fac6e2ef50282f36ab900c6a2&lang=fr`)
       .then((response) => {
         this.setState({
@@ -136,15 +140,21 @@ class App extends React.Component {
         && <Home />}
         <Switch>
           <Route path="/" exact>
+            {loadingCurrent
+            && <Loader />}
             {!loadingCurrent
-            && <City current={currentWeather} handleClick={this.addFavorite} favorite={favoriteCities} />}
+            && currentWeather && <City current={currentWeather} handleClick={this.addFavorite} favorite={favoriteCities} />}
           </Route>
           <Route path="/next-days">
+            {loadingNext
+            && <Loader />}
             {!loadingNext
-            && <NextDays nextWeather={nextWeather} />}
+            && currentWeather && <NextDays nextWeather={nextWeather} />}
           </Route>
+          {loadingNext
+            && <Loader />}
           {!loadingNext
-          && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
+          && currentWeather && <Route path="/details/:id" component={(props) => <NextDaysDetails {...props} data={nextWeather} />} />}
           <Route path="/favorite">
             <FavoriteCities favoriteCities={favoriteCities} setFavoriteCity={this.favoriteCity} />
           </Route>
