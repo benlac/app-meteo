@@ -30,9 +30,9 @@ const NextDaysDetails = (props) => {
       <p className="next-days-details__text">Visibilité: {detail.visibility}m</p>
       <p className="next-days-details__text">Vent: {detail.wind.speed}m/s</p>
       {detail.snow
-      && <p className="next-days-details__text">Volume de neige pour les 3 dernière heures: {detail.snow}</p>}
+      && <p className="next-days-details__text">Volume de neige pour les 3 dernière heures: {detail.snow['3h']}</p>}
       {detail.rain
-      && <p className="next-days-details__text">Volume de pluie pour les 3 dernière heures: {detail.rain}mm</p>}
+      && <p className="next-days-details__text">Volume de pluie pour les 3 dernière heures: {detail.rain['3h']}mm</p>}
     </div>
   );
 };

@@ -8,13 +8,13 @@ const CardFavorite = ({ name, sys, setFavoriteCity }) => {
     setFavoriteCity(name);
   };
   return (
-    <Link to="/" onClick={handleClick}>
-      <div className="favorite__card">
+    <div className="favorite__card">
+      <Link to="/" onClick={handleClick}>
         <Star className="star-icon" />
         <h1>{name}</h1>
         <img src={`https://www.countryflags.io/${sys.country}/shiny/64.png`} alt="" />
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

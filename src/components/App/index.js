@@ -115,6 +115,8 @@ class App extends React.Component {
     this.setState({
       error: null,
       searchValue: '',
+      loadingCurrent: false,
+      loadingNext: false,
     });
   }
 

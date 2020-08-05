@@ -18,7 +18,10 @@
     color: #FFF;
     box-shadow: 0 0 8px 0 rgba(0,0,0, .2);
     position: relative;
-
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
     h1 {
       width: 100%;
       text-align: center;
@@ -28,7 +31,8 @@
     fill: #fdcb6d;
     color: #fdcb6d;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
   }
 }
