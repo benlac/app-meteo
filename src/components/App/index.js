@@ -139,7 +139,7 @@ class App extends React.Component {
       <div className="app">
         <Search value={searchValue} setValue={this.setValue} searchCity={this.searchCity} />
         {!currentWeather
-        && !error && <Home />}
+        && <Home />}
         <Switch>
           <Route path="/" exact>
             {loadingCurrent
