@@ -126,9 +126,7 @@ class App extends React.Component {
     } = this.state;
     if (error) {
       return (
-        <>
-          <Error error={error} handleClick={this.resetError} />
-        </>
+        <Error error={error} handleClick={this.resetError} />
       );
     }
     return (

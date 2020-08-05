@@ -11,7 +11,6 @@ const NextDaysDetails = (props) => {
   const id = props.match.params.id;
   const datas = props.data.list;
   const detail = datas.find((data) => data.dt === parseInt(id));
-
   return (
     <div className="next-days-details">
       <h1 className="next-days-details__title">Details pour le : {`${convertTimestampToDate(detail.dt)} à ${convertTimestamp(detail.dt)}`} à {props.data.city.name}</h1>
